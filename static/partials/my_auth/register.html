@@ -1,8 +1,8 @@
 
-<div class="wrapper-form col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+<div ng-cloak class="wrapper-form col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
 
     <!-- form for add/edit action for item by owner -->
-    <form name="register" class="form-horizontal action_add" role="form" method="POST">
+    <form name="registerForm" class="form-horizontal action_add" role="form" method="POST">
 
         <div class="row">
             <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 text-center">
@@ -14,22 +14,22 @@
 
                     <md-input-container flex>
                         <label>Email address</label>
-                        <input ng-model="user.email" type="email">
+                        <input required name="email" ng-model="user.email" type="email">
                     </md-input-container>
 
                     <md-input-container flex>
                         <label>Id no</label>
-                        <input ng-model="user.username" type="text">
+                        <input required name="username" ng-model="user.username" type="text">
                     </md-input-container>
 
                     <md-input-container flex>
                         <label>Password</label>
-                        <input ng-model="user.password1" type="password">
+                        <input required name="password1" ng-model="user.password1" type="password">
                     </md-input-container>
 
                     <md-input-container flex>
                         <label>Password 2</label>
-                        <input ng-model="user.password2" type="password">
+                        <input required name="password2" ng-model="user.password2" type="password">
                     </md-input-container>
 
                 </div>
@@ -38,7 +38,7 @@
 
         <div class="form-group">
             <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                <md-button class="md-raised md-primary" ng-click="sendRegisterData()">Sign Up</md-button>
+                <md-button ng-disabled="registerForm.$invalid" class="md-raised md-primary" ng-click="sendRegisterData()">Sign Up</md-button>
             </div>
         </div>
 

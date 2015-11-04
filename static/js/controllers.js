@@ -16,6 +16,11 @@ function HomeController($scope, $timeout, AuthUser) {
 
     }, 400);
 
+    /* alert on eventClick */
+    $scope.alertOnEventClick = function(date, jsEvent, view){
+        $scope.alertMessage = (date.title + ' was clicked ');
+    };
+
     $scope.isUserAuth = function () {
         return $scope.user.id;
     };
@@ -29,10 +34,16 @@ function HomeController($scope, $timeout, AuthUser) {
           center: 'title',
           right: 'today prev,next'
         },
-        dayClick: $scope.alertEventOnClick,
+        dayClick: $scope.alertOnEventClick,
         eventDrop: $scope.alertOnDrop,
         eventResize: $scope.alertOnResize
       }
+    };
+
+    $scope.eventSource = {
+            url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
+            className: 'gcal-event',           // an option!
+            currentTimezone: 'America/Chicago' // an option!
     };
 }
 
@@ -675,8 +686,8 @@ function LoginCtrl($scope, $http, $location, $window, Flash) {
     $scope.errorLoginMessage = 'Incorrect username or password.';
 
     $scope.user = {
-        username : 'testUsername',
-        password: '1'
+        username : undefined,
+        password: undefined
     };
 
     $scope.sendLoginData = function () {
@@ -705,9 +716,9 @@ function RegistrationController($scope, $http, $location, $window, Flash) {
     $scope.errorRegisterMessage = 'Incorrect username or password.';
 
     $scope.user = {
-        username : '',
-        password1: '',
-        password2: ''
+        username : undefined,
+        password1: undefined,
+        password2: undefined
     };
 
     $scope.sendRegisterData = function () {

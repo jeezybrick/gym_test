@@ -16,6 +16,7 @@ angular
         'ngMaterial',
         'angular-loading-bar',
         'angular.filter',
+        'ngMessages'
 
 
     ])
