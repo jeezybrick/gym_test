@@ -1,0 +1,70 @@
+<div class="row home">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+         style="height: 400px;border-radius: 4px 4px 0 0;border: 1px solid #e1e8ed;"
+         ng-if="isUserAuth()">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                 style="height: 95px;background-color: #0084B4 !important;border-radius: 4px 4px 0 0;"></div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                <h4>[[ user.full_name ]]</h4>
+                <h4>
+                    <small>[[ user.username ]]</small>
+                </h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9"
+         style="height: 400px;padding:0 10px;"
+         ng-if="isUserAuth()">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-radius: 4px 4px 0 0;border: 1px solid #e1e8ed;margin: 0 15px;padding: 0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                         style="border-bottom: 1px solid #e1e8ed;">
+                        <h2>
+                            <small>Here are some people you might enjoy following.</small>
+                        </h2>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="height: 200px;">
+
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-radius: 4px 4px 0 0;border-color: #BFE0EC !important;margin: 10px 15px;padding: 0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                         style="background-color: #E5F2F7;border: 1px solid #BFE0EC;padding: 10px">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <input class="form-control" id="id_name" maxlength="100" name="name"
+                                         placeholder="Whats happening?" required="required" title="" type="text"
+                                         ng-model="itemDetail.name">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="height: 200px;">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</div>
+
+
+<div class="starter-template" ng-hide="isUserAuth()">
+    <p class="lead animated zoomIn">
+
+    <h2 class="main-greet animated fadeInUp">
+
+        Welcome!<br>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 animated fadeInUp">
+            <md-button class="md-raised md-primary" ui-sref="auth-registration">Sign Up</md-button>
+            <md-button class="md-raised md-primary" ui-sref="auth-login">Login</md-button>
+        </div>
+
+
+    </h2>
+    </p>
+</div>

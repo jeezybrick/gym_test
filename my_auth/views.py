@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.views.generic import View
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
@@ -34,6 +35,23 @@ class LoginView(View):
 
     def get_success_url(self):
         return reverse("home")
+
+
+# Registration view
+class RegisterView(View):
+    form_class = forms.MyRegForm
+    template_name = 'my_auth/register.html'
+
+    def get(self, request):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('register_success'))
+        return render(request, self.template_name, {'form': form})
 
 
 # logout function

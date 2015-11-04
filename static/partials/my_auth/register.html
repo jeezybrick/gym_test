@@ -1,0 +1,47 @@
+
+<div class="wrapperOnList col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+
+    <!-- form for add/edit action for item by owner -->
+    <form name="login" class="form-horizontal action_add" role="form" method="POST" ng-submit="addAction()">
+
+        <div class="form-group">
+
+            <div class="col-md-7"><input class="form-control" id="id_price" maxlength="100" name="new_price"
+                                         placeholder="Full name" required="required" title="" type="number"
+                                         ng-model="action.new_price">
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-md-7"><input type="email" class="form-control" id="id_description" name="description"
+                                            placeholder="Email address" required="required"
+                                            title="" ng-model="action.description">
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-md-7"><input class="form-control" id="id_description" name="description"
+                                            placeholder="Id no" required="required"
+                                            title="" ng-model="action.description">
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-md-7"><input type="password" class="form-control" id="id_description" name="description"
+                                            placeholder="Password" required="required"
+                                            title="" ng-model="action.description">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-6 text-center">
+                <md-button class="md-raised md-primary">Sign Up</md-button>
+            </div>
+        </div>
+    </form>
+
+</div>

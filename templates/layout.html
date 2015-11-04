@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html lang="" ng-app="myApp">
 <head>
+    <!-- Angular HTML5 mode -->
+    <base href="/" />
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -25,10 +28,10 @@
 
     <!-- Custom css -->
     <link rel="stylesheet" href="{% static 'products/css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'products/css/media.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media.css' %}">
 
     <!-- animate css -->
-    <link rel="stylesheet" href="{% static 'products/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
 
     <!-- angular flash for flash messages -->
     <link rel="stylesheet" href="{% static 'products/css/angular-flash.css' %}">
@@ -51,17 +54,17 @@
 </head>
 
 <body>
-{% if user.is_authenticated %}
+
     <div>
 
         <!-- Navbar -->
        {% include 'partials/nav.html' %}
     </div>
-{% endif %}
+
 <div class="container-fluid main-content">
-    {% block content %}
-        {# Контент #}
-    {% endblock %}
+
+    <div ui-view></div>
+
 </div>
 
 
@@ -73,8 +76,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular-resource.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular-route.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.js"></script>
-<script src="{% static 'products/js/angular-flash.js' %}"></script>
+<script src="{% static 'js/angular-flash.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.3.3/angular-strap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.3.3/angular-strap.tpl.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular-aria.min.js"></script>
@@ -82,24 +86,27 @@
 <!-- Angular Material Javascript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.11.4/angular-material.min.js"></script>
 
-<!-- ng-file-upload -->
-<script src="{% static 'products/js/ng-file-upload-shim.min.js' %}"></script>
-<script src="{% static 'products/js/ng-file-upload.min.js' %}"></script>
+<!-- angular-loading-bar  -->
+<script src='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.7.1/loading-bar.min.js'></script>
+
+<!-- angular-filter -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.7/angular-filter.min.js'></script>
 
 <!-- Bootbox for modals -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 
 <!-- Moment.js -->
-<script src="{% static 'products/js/moment.js' %}"></script>
+<script src="{% static 'js/moment.js' %}"></script>
 
 <!-- Custom js -->
-<script src="{% static 'products/js/app.js' %}"></script>
-<script src="{% static 'products/js/services.js' %}"></script>
-<script src="{% static 'products/js/controllers.js' %}"></script>
-<script src="{% static 'products/js/common.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+
+<script src="{% static 'js/services.js' %}"></script>
+<script src="{% static 'js/controllers.js' %}"></script>
+<script src="{% static 'js/common.js' %}"></script>
 
 <!-- ui bootstrap -->
-<script src="{% static 'products/js/ui-bootstrap.min.js' %}"></script>
+<script src="{% static 'js/ui-bootstrap.min.js' %}"></script>
 
 <script>
   // This allows you to access the current user id in your angular controllers.

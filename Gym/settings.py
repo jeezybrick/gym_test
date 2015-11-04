@@ -43,6 +43,7 @@ INSTALLED_APPS = (
 
     # 3-p apps
     'crispy_forms',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -106,6 +107,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = ('static', )
 
 # Default auth model
 AUTH_USER_MODEL = 'my_auth.MyUser'
