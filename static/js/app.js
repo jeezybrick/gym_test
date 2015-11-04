@@ -50,7 +50,7 @@ angular
             .state('auth-registration', {
                 url: '/register',
                 templateUrl: '/static/partials/my_auth/register.html',
-                controller: 'LoginCtrl'
+                controller: 'RegistrationController'
             })
             .state('home', {
                 url: '/',

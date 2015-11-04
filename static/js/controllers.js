@@ -695,6 +695,37 @@ function LoginCtrl($scope, $http, $location, $window, Flash) {
 
 }
 
+angular
+    .module('myApp')
+    .controller('RegistrationController', RegistrationController);
+
+function RegistrationController($scope, $http, $location, $window, Flash) {
+
+    $scope.page = '/rest-auth/registration/';
+    $scope.errorRegisterMessage = 'Incorrect username or password.';
+
+    $scope.user = {
+        username : '',
+        password1: '',
+        password2: ''
+    };
+
+    $scope.sendRegisterData = function () {
+
+        $http.post($scope.page, $scope.user).success(function () {
+
+            //$location.path('/');
+            //$window.location.href = '/';
+
+        }).error(function (error) {
+
+            $scope.sendRegisterDataError = error;
+            Flash.create('danger', $scope.sendRegisterDataError, 'flash-message');
+        });
+    };
+
+}
+
 
 angular
     .module('myApp')
