@@ -37,6 +37,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # my apps
+    'my_auth',
+
+    # 3-p apps
+    'crispy_forms',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,7 +61,7 @@ ROOT_URLCONF = 'Gym.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -100,3 +106,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Default auth model
+AUTH_USER_MODEL = 'my_auth.MyUser'
+
+# bootstrap3 for crispy forms
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
