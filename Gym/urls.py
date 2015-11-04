@@ -26,4 +26,6 @@ urlpatterns = [
     ), name='home'),
 
     url(r'^', include('my_auth.urls')),
+
+    url(r'^rest-auth/', include('rest_auth.urls'))
 ]

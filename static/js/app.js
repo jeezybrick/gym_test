@@ -6,6 +6,7 @@ angular
     .module('myApp', [
         'ngRoute',
         'ui.router',
+        'ui.calendar',
         'ui.bootstrap',
         'ngAnimate',
         'ngResource',
@@ -15,6 +16,7 @@ angular
         'ngMaterial',
         'angular-loading-bar',
         'angular.filter',
+
 
     ])
     .config(function ($locationProvider, $httpProvider, $resourceProvider, $interpolateProvider, $routeProvider,
@@ -55,10 +57,10 @@ angular
                 templateUrl: '/static/partials/home.html',
                 controller: 'HomeController'
             })
-            .state('products-list', {
-                url: '/products/',
-                templateUrl: '/products_ang/list/',
-                controller: 'ItemController'
+            .state('settings', {
+                url: '/settings',
+                templateUrl: '/static/partials/settings.html',
+                controller: 'SettingsController'
             })
             .state('products-detail', {
                 url: '/products/:itemId/',

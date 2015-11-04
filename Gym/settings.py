@@ -44,6 +44,8 @@ INSTALLED_APPS = (
     # 3-p apps
     'crispy_forms',
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
 )
 
 MIDDLEWARE_CLASSES = (

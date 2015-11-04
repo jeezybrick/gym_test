@@ -19,6 +19,21 @@ function HomeController($scope, $timeout, AuthUser) {
     $scope.isUserAuth = function () {
         return $scope.user.id;
     };
+     /* config object */
+    $scope.uiConfig = {
+      calendar:{
+        height: 450,
+        editable: true,
+        header:{
+          left: 'month basicWeek basicDay agendaWeek agendaDay',
+          center: 'title',
+          right: 'today prev,next'
+        },
+        dayClick: $scope.alertEventOnClick,
+        eventDrop: $scope.alertOnDrop,
+        eventResize: $scope.alertOnResize
+      }
+    };
 }
 
 
@@ -654,9 +669,64 @@ angular
     .module('myApp')
     .controller('LoginCtrl', LoginCtrl);
 
-function LoginCtrl($scope) {
+function LoginCtrl($scope, $http, $location, $window, Flash) {
 
-//
+    $scope.page = '/rest-auth/login/';
+    $scope.errorLoginMessage = 'Incorrect username or password.';
+
+    $scope.user = {
+        username : 'testUsername',
+        password: '1'
+    };
+
+    $scope.sendLoginData = function () {
+
+        $http.post($scope.page, $scope.user).success(function () {
+
+            //$location.path('/');
+            $window.location.href = '/';
+
+        }).error(function (error) {
+
+            $scope.sendLoginDataError = error;
+            Flash.create('danger', $scope.errorLoginMessage, 'flash-message');
+        });
+    };
+
+}
+
+
+angular
+    .module('myApp')
+    .controller('SettingsController', SettingsController);
+
+function SettingsController($scope, $http, $location, $window, Flash) {
+
+    $scope.page = '/rest-auth/user/';
+    $scope.successEditSettingsMessage = 'Settings edit successfully!';
+
+    $http.get($scope.page).success(function (response) {
+
+        $scope.authUserData = response;
+
+    }).error(function (error) {
+
+        Flash.create('danger', error, 'flash-message');
+    });
+
+    $scope.editSettings = function(){
+
+
+        $http.put($scope.page, $scope.authUserData).success(function (response) {
+
+            Flash.create('success', $scope.successEditSettingsMessage, 'flash-message');
+
+        }).error(function (error) {
+
+            Flash.create('danger', error, 'flash-message');
+        });
+
+    };
 
 }
 
