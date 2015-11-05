@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from datetime import datetime
 from my_auth.models import MyUser
-from booking.models import Booking
+from booking.models import Booking, BookingTimeStep
 
 
 class UserSerializer(serializers.ModelField):
@@ -22,4 +22,17 @@ class BookingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Booking
-        fields = ('id', 'user', 'swim_lane', 'start_date', 'end_date', 'test',)
+        fields = ('id', 'user', 'swim_lane', 'start_date', 'start_time', 'test',)
+
+
+class BookingTimeStepSerializer(serializers.ModelSerializer):
+
+    is_booked = serializers.SerializerMethodField(read_only=True)
+
+    def get_is_booked(self, obj):
+        request = self.context.get('request', None)
+        return Booking.objects.filter(start_time=obj.time).exists()
+
+    class Meta:
+        model = BookingTimeStep
+        fields = ('id', 'time', 'is_booked', )

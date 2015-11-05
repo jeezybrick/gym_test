@@ -7,7 +7,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from my_auth.models import MyUser
-from booking.models import Booking
+from booking.models import Booking, BookingTimeStep
 from api import serializers
 
 
@@ -35,8 +35,23 @@ class BookingList(generics.ListCreateAPIView):
         return self.create(request, *args, **kwargs)
 
 
-# Item detail
 class BookingDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.BookingSerializer
     queryset = Booking.objects.all()
     permission_classes = (permissions.IsAuthenticated, )
+
+
+class BookingTimeStepList(generics.GenericAPIView):
+    serializer_class = serializers.BookingTimeStepSerializer
+    queryset = BookingTimeStep.objects.all()
+
+    def get(self, request):
+        queryset = BookingTimeStep.objects.all()
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = serializers.BookingTimeStepSerializer(queryset, many=True)
+        return Response(serializer.data)

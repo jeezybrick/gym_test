@@ -16,7 +16,8 @@ angular
         'ngMaterial',
         'angular-loading-bar',
         'angular.filter',
-        'ngMessages'
+        'ngMessages',
+        'datePicker'
 
 
     ])
@@ -58,31 +59,10 @@ angular
                 templateUrl: '/static/partials/home.html',
                 controller: 'HomeController'
             })
-            .state('settings', {
-                url: '/settings',
+            .state('my-bookings', {
+                url: '/my_bookings',
                 templateUrl: '/static/partials/settings.html',
-                controller: 'SettingsController'
+                controller: 'BookingsController'
             })
-            .state('products-detail', {
-                url: '/products/:itemId/',
-                templateUrl: '/products_ang/show/',
-                controller: 'ItemDetailController'
-            })
-            .state('categories-list', {
-                url: '/categories/',
-                templateUrl: '/categories_ang/',
-                controller: 'CategoryListController'
-            })
-            .state('shop-list', {
-                url: '/shops/',
-                templateUrl: '/static/products/partials/shop-list.html',
-                controller: 'ShopListController'
-            })
-            .state('shop-detail', {
-                url: '/shops/:id/',
-                templateUrl: '/static/products/partials/shop-detail.html',
-                controller: 'ShopDetailController'
-            })
-
 
     });

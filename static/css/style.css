@@ -21,7 +21,13 @@
 }
 
 #cog-on-nav > a {
-    padding: 0 5px;
+    padding: 3px 5px;
     min-height: 50px;
     color: white;
+}
+
+#cog-on-nav-xs > a {
+    padding: 3px 0;
+    color: white;
+    margin-right: 30px;
 }
