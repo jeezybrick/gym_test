@@ -5,8 +5,8 @@
         <div ui-calendar="uiConfig.calendar" ng-model="booking"></div>
     </div>
 
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center"
-         ng-if="isUserAuth()">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center animated fadeInDown"
+         ng-if="isUserAuth() && selectedDate">
         <div class="row">
             <div class="col-lg-3 col-xs-12" ng-repeat="booking in booking" style="border: solid 1px #ddd;">
                 <div class="row">
@@ -15,14 +15,12 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6 text-center">
-                        <md-button class="md-raised" ng-disabled="booking.is_booked">
+                        <md-button class="md-raised" ng-disabled="booking.is_booked" ng-click="makeOrder(booking.time)">
                             <i class="fa fa-plus fa-md"></i> Order
                         </md-button>
                     </div>
 
                 </div>
-
-
             </div>
         </div>
     </div>

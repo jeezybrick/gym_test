@@ -6,7 +6,9 @@ angular
     .module('myApp')
     .controller('HomeController', HomeController);
 
-function HomeController($scope, $timeout, AuthUser, Booking) {
+function HomeController($scope, $timeout, AuthUser, Booking, MyBookings, Flash) {
+    $scope.selectedDate = false;
+
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
@@ -14,6 +16,7 @@ function HomeController($scope, $timeout, AuthUser, Booking) {
 
     $scope.user = AuthUser; // Auth user object
     $scope.startPageLoad = false;
+    $scope.addOrderMessageSuccess = 'Approved!';
 
     $scope.delay = $timeout(function () {
 
@@ -23,7 +26,9 @@ function HomeController($scope, $timeout, AuthUser, Booking) {
 
     /* alert on eventClick */
     $scope.alertOnEventClick = function(date, jsEvent, view){
-        $scope.alertMessage = (date.title + ' was clicked ');
+
+        $scope.alertMessage = (date.format() + ' was clicked ');
+        $scope.selectedDate = date.format();
     };
 
     $scope.isUserAuth = function () {
@@ -35,7 +40,7 @@ function HomeController($scope, $timeout, AuthUser, Booking) {
         height: 450,
         editable: true,
         header:{
-          left: 'month basicWeek basicDay agendaWeek agendaDay',
+          left: '',
           center: 'title',
           right: 'today prev,next'
         },
@@ -63,6 +68,39 @@ function HomeController($scope, $timeout, AuthUser, Booking) {
     }, function () {
         $scope.bookingLoadError = true;
     });
+
+    /**
+     * Add order
+     */
+    $scope.makeOrder = function (bookingTime) {
+
+        bootbox.confirm("Do you wan't to make the order?", function (answer) {
+
+            if (answer === true) {
+
+                $scope.order = new MyBookings();
+                $scope.order.start_time = bookingTime;
+                $scope.order.start_date = $scope.selectedDate;
+                $scope.order.user = $scope.user.id;
+                $scope.order.swim_lane = 2;
+
+                $scope.order.$save(function (response) {
+
+                    bootbox.alert('Approved');
+
+
+                }, function (error) {
+
+                    $scope.itemInCartError = error.data.detail;
+                    Flash.create('warning', $scope.itemInCartError, 'flash-message-item-list');
+
+                });
+            }
+
+        });
+
+
+    };
 }
 
 

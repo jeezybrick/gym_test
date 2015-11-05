@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'my_auth',
     'booking',
     'api',
+    'social',
 
     # 3-p apps
     'crispy_forms',
@@ -52,6 +53,8 @@ INSTALLED_APPS = (
     'allauth',
     'allauth.account',
     'rest_auth.registration',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
 
 )
 
@@ -79,6 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'allauth.socialaccount.context_processors.socialaccount'
             ],
         },
     },
