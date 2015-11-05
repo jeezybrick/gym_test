@@ -4,10 +4,10 @@
 
 
 angular.module('myApp.services', ['ngResource'])
-    .factory('Item', function ($resource) {
-        return $resource('/api/items/:id/', {id: '@id'}, {
+    .factory('Booking', function ($resource) {
+        return $resource('/api/booking/:id/', {id: '@id'}, {
             'update': {method: 'PUT'},
-            'query': {method: 'GET', isArray: false},
+            'query': {method: 'GET', isArray: true},
             'get': {method: 'GET', cache: false}
         });
     })

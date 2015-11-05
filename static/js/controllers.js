@@ -6,7 +6,12 @@ angular
     .module('myApp')
     .controller('HomeController', HomeController);
 
-function HomeController($scope, $timeout, AuthUser) {
+function HomeController($scope, $timeout, AuthUser, Booking) {
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+
     $scope.user = AuthUser; // Auth user object
     $scope.startPageLoad = false;
 
@@ -40,11 +45,24 @@ function HomeController($scope, $timeout, AuthUser) {
       }
     };
 
-    $scope.eventSource = {
-            url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
-            className: 'gcal-event',           // an option!
-            currentTimezone: 'America/Chicago' // an option!
-    };
+    $scope.events = [
+      {title: 'All Day Event',start: new Date(y, m, 1)},
+      {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
+      {id: 999,title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: true},
+      {id: 999,title: 'Repeating Event',start: new Date(y, m, d + 4, 16, 0),allDay: false},
+      {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false}
+    ];
+
+    /**
+     * Get list of bookings
+     */
+    $scope.booking = Booking.query(function () {
+
+        $scope.bookingLoad = true;
+
+    }, function () {
+        $scope.bookingLoadError = true;
+    });
 }
 
 

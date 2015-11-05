@@ -41,6 +41,8 @@ INSTALLED_APPS = (
 
     # my apps
     'my_auth',
+    'booking',
+    'api',
 
     # 3-p apps
     'crispy_forms',
