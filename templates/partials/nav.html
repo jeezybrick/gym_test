@@ -3,7 +3,7 @@
 <nav class="navbar navbar-default navbar-fixed-top {% if user.is_authenticated %} navbar-inverse {% endif %}">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse"
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -11,13 +11,21 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <ul class="nav navbar-nav hidden-lg hidden-md hidden-sm pull-right">
-                <li id="cog-on-nav-xs" class="nav-cart">
-                    <a ui-sref="settings">
-                        <i class="fa fa-cog fa-2x"></i>
+            <ul class="nav navbar-nav hidden-lg hidden-md hidden-sm pull-left">
+                <li id="user-on-nav-xs" class="nav-cart">
+                    <a ui-sref="home">
+                        <i class="fa fa-calendar fa-2x"></i>
                     </a>
                 </li>
-            </ul>
+                </ul>
+                <ul class="nav navbar-nav hidden-lg hidden-md hidden-sm pull-left">
+                    <li id="calendar-on-nav-xs" class="nav-cart">
+                        <a ui-sref="my-bookings">
+                            <i class="fa fa-user fa-2x"></i>
+                        </a>
+                    </li>
+
+                </ul>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse text-center">
@@ -36,8 +44,8 @@
                 <ul class="nav navbar-nav navbar-right">
 
                     <li id="cog-on-nav" class="hidden-xs">
-                        <a ui-sref="settings">
-                            <i class="fa fa-cog fa-3x"></i>
+                        <a ui-sref="my-bookings">
+                            <i class="fa fa-user fa-3x"></i>
                         </a>
                     </li>
                     <li>

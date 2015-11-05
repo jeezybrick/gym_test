@@ -15,14 +15,9 @@ class UserSerializer(serializers.ModelField):
 
 class BookingSerializer(serializers.ModelSerializer):
 
-    test = serializers.SerializerMethodField(read_only=True)
-
-    def get_test(self, obj):
-        return [datetime(2012, 1, 1, hr, min, 0).time() for hr in range(9, 22) for min in range(0,60,30)]
-
     class Meta:
         model = Booking
-        fields = ('id', 'user', 'swim_lane', 'start_date', 'start_time', 'test',)
+        fields = ('id', 'user', 'swim_lane', 'start_date', 'start_time', )
 
 
 class BookingTimeStepSerializer(serializers.ModelSerializer):

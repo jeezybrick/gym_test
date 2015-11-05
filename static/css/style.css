@@ -26,8 +26,12 @@
     color: white;
 }
 
-#cog-on-nav-xs > a {
+#user-on-nav-xs > a {
+    padding: 3px 0;
+    margin-left: 30px;
+}
+#calendar-on-nav-xs > a {
     padding: 3px 0;
     color: white;
-    margin-right: 30px;
+    margin-left: 40px;
 }

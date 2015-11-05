@@ -61,7 +61,7 @@ angular
             })
             .state('my-bookings', {
                 url: '/my_bookings',
-                templateUrl: '/static/partials/settings.html',
+                templateUrl: '/static/partials/my-bookings.html',
                 controller: 'BookingsController'
             })
 

@@ -758,35 +758,34 @@ function RegistrationController($scope, $http, $location, $window, Flash) {
 
 angular
     .module('myApp')
-    .controller('SettingsController', SettingsController);
+    .controller('BookingsController', BookingsController);
 
-function SettingsController($scope, $http, $location, $window, Flash) {
+function BookingsController($scope, $http, $location, $window, Flash, MyBookings) {
 
-    $scope.page = '/rest-auth/user/';
-    $scope.successEditSettingsMessage = 'Settings edit successfully!';
+    $scope.bookings = MyBookings.query(function () {
 
-    $http.get($scope.page).success(function (response) {
+        $scope.bookingsLoad = true;
 
-        $scope.authUserData = response;
-
-    }).error(function (error) {
-
-        Flash.create('danger', error, 'flash-message');
+    }, function () {
+        $scope.bookingsLoadError = true;
     });
 
-    $scope.editSettings = function(){
+    $scope.removeOrder = function (bookingId) {
 
+        bootbox.confirm('Are you sure you want to delete this order?', function (answer) {
 
-        $http.put($scope.page, $scope.authUserData).success(function (response) {
+            if (answer === true)
 
-            Flash.create('success', $scope.successEditSettingsMessage, 'flash-message');
+                MyBookings.delete({id: bookingId}, function () {
 
-        }).error(function (error) {
+                    $location.path('my-bookings');
 
-            Flash.create('danger', error, 'flash-message');
+                });
+
         });
 
     };
+
 
 }
 
