@@ -44,15 +44,7 @@ angular
         // google ath provider
         $authProvider.google({
             clientId: '498316320509-64nn07fvqn3a76o8bk72s2bimmgaa273.apps.googleusercontent.com',
-            redirectUri: 'rest-auth/google/'
-        });
-
-        $authProvider.oauth2({
-            name: 'foursquare',
-            url: '/auth/foursquare',
-            clientId: 'Foursquare Client ID',
-            redirectUri: window.location.origin,
-            authorizationEndpoint: 'https://foursquare.com/oauth2/authenticate',
+            redirectUri: 'http://127.0.0.1:8000/'
         });
 
 

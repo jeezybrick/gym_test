@@ -2,6 +2,7 @@
 from django.http import Http404
 from django.utils.datastructures import MultiValueDictKeyError
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.mail import send_mail
 from rest_framework import generics, status, permissions, mixins
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
@@ -27,6 +28,8 @@ class BookingList(generics.ListCreateAPIView):
         return self.list(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
+        send_mail('Subject here', 'Here is the message.', 'smooker14@gmail.com',
+        ['tsmooker14@gmail.com'], fail_silently=False)
         return self.create(request, *args, **kwargs)
 
 
