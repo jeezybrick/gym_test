@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'rest_auth.registration',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
+    'social.apps.django_app.default',
 
 )
 
@@ -110,6 +111,9 @@ AUTHENTICATION_BACKENDS = (
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.github.GithubOAuth2',
+
 )
 
 # Internationalization
@@ -144,4 +148,24 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'smooker14@gmail.com'
-EMAIL_HOST_PASSWORD = '16931693'
+EMAIL_HOST_PASSWORD = 'pass'
+
+
+# SOCIAL_AUTH_USER_MODEL = 'my_auth.OAuthUser'
+
+SOCIAL_AUTH_GITHUB_KEY = '2abee56deea44960508b'
+SOCIAL_AUTH_GITHUB_SECRET = '4be14a5e6acef884cae00b76defa6cea86854a4c'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1627150820892036'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'e2b17ae2c8a8eb78c70c05d16136cedd'
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
+
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'email']
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'

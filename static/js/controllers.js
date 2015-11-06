@@ -17,6 +17,7 @@ function HomeController($scope, $timeout, AuthUser, Booking, MyBookings, Flash, 
     $scope.user = AuthUser; // Auth user object
     $scope.startPageLoad = false;
     $scope.addOrderMessageSuccess = 'Approved!';
+    $scope.selectedDate = date;
 
     $scope.delay = $timeout(function () {
 
