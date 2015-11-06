@@ -6,7 +6,7 @@
     </div>
 
     <!-- preloader -->
-    <div class="row" ng-hide="bookingLoad">
+    <div class="row" ng-hide="bookingLoad || !isUserAuth()">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="margin-top: 80px;">
             <div layout="row" layout-sm="column" layout-align="space-around">
                 <md-progress-circular md-mode="indeterminate"></md-progress-circular>
