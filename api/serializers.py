@@ -14,7 +14,7 @@ class BookingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Booking
-        fields = ('id', 'swim_lane', 'start_date', 'start_time', )
+        fields = ('id', 'swim_lane', 'start_date', 'start_time', 'end_time', )
 
 
 class BookingTimeStepSerializer(serializers.ModelSerializer):

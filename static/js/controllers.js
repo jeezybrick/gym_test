@@ -86,6 +86,7 @@ function HomeController($scope, $timeout, AuthUser, Booking, MyBookings, Flash, 
 
                 $scope.order = new MyBookings();
                 $scope.order.start_time = booking.time_start;
+                $scope.order.end_time = booking.time_end;
                 $scope.order.start_date = $scope.selectedDate;
                 $scope.order.user = $scope.user.id;
                 $scope.order.swim_lane = 2;
