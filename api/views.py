@@ -18,13 +18,8 @@ class StandardResultsSetPagination(PageNumberPagination):
     max_page_size = 1
 
 
-# Comments pagination
-class CommentsSetPagination(StandardResultsSetPagination):
-    page_size = 4
-
-
 class BookingList(generics.ListCreateAPIView):
-    queryset = Booking.objects.all()
+    queryset = Booking.objects.order_by('start_date')
     serializer_class = serializers.BookingSerializer
     permission_classes = (permissions.IsAuthenticated, )
 
@@ -44,6 +39,7 @@ class BookingDetail(generics.RetrieveUpdateDestroyAPIView):
 class BookingTimeStepList(generics.GenericAPIView):
     serializer_class = serializers.BookingTimeStepSerializer
     queryset = BookingTimeStep.objects.all()
+    permission_classes = (permissions.IsAuthenticated, )
 
     def get(self, request):
         queryset = BookingTimeStep.objects.all()

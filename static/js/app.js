@@ -17,12 +17,13 @@ angular
         'angular-loading-bar',
         'angular.filter',
         'ngMessages',
-        'datePicker'
+        'datePicker',
+        'satellizer'
 
 
     ])
     .config(function ($locationProvider, $httpProvider, $resourceProvider, $interpolateProvider, $routeProvider,
-                      $compileProvider, $stateProvider, $urlRouterProvider) {
+                      $compileProvider, $stateProvider, $urlRouterProvider, $authProvider) {
 
         // CSRF Support
         $httpProvider.defaults.xsrfCookieName = 'csrftoken';
@@ -39,6 +40,20 @@ angular
         // enable html5Mode for pushstate ('#'-less URLs)
         $locationProvider.html5Mode(true);
         $locationProvider.hashPrefix('!');
+
+        // google ath provider
+        $authProvider.google({
+            clientId: '498316320509-64nn07fvqn3a76o8bk72s2bimmgaa273.apps.googleusercontent.com',
+            redirectUri: 'rest-auth/google/'
+        });
+
+        $authProvider.oauth2({
+            name: 'foursquare',
+            url: '/auth/foursquare',
+            clientId: 'Foursquare Client ID',
+            redirectUri: window.location.origin,
+            authorizationEndpoint: 'https://foursquare.com/oauth2/authenticate',
+        });
 
 
         // Routing

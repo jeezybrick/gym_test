@@ -1,7 +1,4 @@
 from rest_framework import serializers
-from django.shortcuts import get_object_or_404
-from django.utils.translation import ugettext_lazy as _
-from datetime import datetime
 from my_auth.models import MyUser
 from booking.models import Booking, BookingTimeStep
 

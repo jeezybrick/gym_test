@@ -1,7 +1,12 @@
 
 <div ng-cloak class="wrapper-form col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-    <!-- form for add/edit action for item by owner -->
+    <!-- postloader -->
+    <div layout="row" layout-sm="column" layout-align="space-around" ng-show="loginProcess">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+
+    <!-- form for login-->
     <form name="loginForm" class="form-horizontal action_add" role="form" method="POST">
 
         <div class="row">
