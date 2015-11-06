@@ -17,7 +17,7 @@ function HomeController($scope, $timeout, AuthUser, Booking, MyBookings, Flash, 
     $scope.user = AuthUser; // Auth user object
     $scope.startPageLoad = false;
     $scope.addOrderMessageSuccess = 'Approved!';
-    $scope.selectedDate = date;
+    $scope.selectedDate = moment(date).format('YYYY-MM-DD');
 
     $scope.delay = $timeout(function () {
 
@@ -85,7 +85,7 @@ function HomeController($scope, $timeout, AuthUser, Booking, MyBookings, Flash, 
             if (answer === true) {
 
                 $scope.order = new MyBookings();
-                $scope.order.start_time = booking.time;
+                $scope.order.start_time = booking.time_start;
                 $scope.order.start_date = $scope.selectedDate;
                 $scope.order.user = $scope.user.id;
                 $scope.order.swim_lane = 2;
@@ -109,7 +109,7 @@ function HomeController($scope, $timeout, AuthUser, Booking, MyBookings, Flash, 
     };
 
     $scope.authenticate = function(provider) {
-      $auth.authenticate(provider);
+        $auth.authenticate(provider);
     };
 }
 

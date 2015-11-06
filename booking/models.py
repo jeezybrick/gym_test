@@ -14,7 +14,8 @@ class Booking(models.Model):
 
 
 class BookingTimeStep(models.Model):
-    time = models.TimeField()
+    time_start = models.TimeField()
+    time_end = models.TimeField()
 
     def __str__(self):
         return self.time

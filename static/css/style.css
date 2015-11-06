@@ -34,5 +34,8 @@
     padding: 3px 0;
     color: white;
     margin-left: 15px;
+}
 
+.disable-time-slot{
+    background-color: #EBE9E9;
 }
