@@ -16,6 +16,7 @@ function HomeController($scope, $timeout, AuthUser, Booking, MyBookings, Flash, 
 
     $scope.user = AuthUser; // Auth user object
     $scope.startPageLoad = false;
+    $scope.bookingLoad = false;
     $scope.addOrderMessageSuccess = 'Approved!';
     $scope.selectedDate = moment(date).format('YYYY-MM-DD');
 
@@ -37,18 +38,19 @@ function HomeController($scope, $timeout, AuthUser, Booking, MyBookings, Flash, 
     };
      /* config object */
     $scope.uiConfig = {
-      calendar:{
-        height: 450,
-        editable: true,
-        header:{
-          left: '',
-          center: 'title',
-          right: 'today prev,next'
-        },
-        dayClick: $scope.alertOnEventClick,
-        eventDrop: $scope.alertOnDrop,
-        eventResize: $scope.alertOnResize
-      }
+        calendar: {
+            height: 450,
+            editable: true,
+            header: {
+                left: '',
+                center: 'title',
+                right: 'today prev,next'
+            },
+            dayClick: $scope.alertOnEventClick,
+            eventDrop: $scope.alertOnDrop,
+            eventResize: $scope.alertOnResize,
+            //defaultView: 'basicWeek'
+        }
     };
 
     $scope.events = [
@@ -188,25 +190,30 @@ angular
 
 function BookingsController($scope, $http, $location, $window, Flash, MyBookings) {
 
+    var date = new Date();
+    $scope.currentDate = moment(date).format('MMMM ' + 'YYYY');
+    $scope.ordersLoad = false;
+
     $scope.bookings = MyBookings.query(function () {
 
-        $scope.bookingsLoad = true;
+        $scope.ordersLoad = true;
 
     }, function () {
         $scope.bookingsLoadError = true;
     });
 
-    $scope.removeOrder = function (bookingId) {
+    $scope.removeOrder = function (index) {
 
         bootbox.confirm('Are you sure you want to delete this order?', function (answer) {
 
-            if (answer === true)
+            if (answer === true) {
+                MyBookings.delete({id: $scope.bookings[index].id}, function () {
 
-                MyBookings.delete({id: bookingId}, function () {
-
-                    $location.path('my-bookings');
+                    $scope.bookings.splice(index, 1);
 
                 });
+            }
+
 
         });
 
